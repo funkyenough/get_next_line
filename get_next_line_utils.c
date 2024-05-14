@@ -1,20 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yinhong <yinhong@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/14 11:32:46 by yinhong           #+#    #+#             */
+/*   Updated: 2024/05/14 11:32:47 by yinhong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-int	ft_getc(int fd)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	static char buf[BUFSIZ];
-	static char *ptr;
-	static int n;
+	char		*d;
+	const char	*s;
 
-	n = 0;
-
-	if (n == 0)
-	{
-		n = read(fd, buf, sizeof buf);
-		ptr = buf;
-	}
-	if (--n >= 0)
-		return (unsigned char)*ptr++;
-	else
-		return EOF;
+	if (!dst && !src)
+		return (NULL);
+	d = dst;
+	s = src;
+	while (n--)
+		*d++ = *s++;
+	return (dst);
 }
